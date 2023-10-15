@@ -1,6 +1,7 @@
 export default class Gameboard {
    grid = [];
    missedShotCoords = [];
+   numOfHits = 0;
 
    constructor() {
       for (let row = 0; row < 10; row++) {
@@ -66,6 +67,7 @@ export default class Gameboard {
 
       this.grid[x][y].hit();
       this.grid[x][y] = "hit";
+      this.numOfHits++;
 
       return true;
    }
