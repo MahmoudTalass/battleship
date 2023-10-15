@@ -15,38 +15,42 @@ export default class Gameboard {
    placeShip(ship, direction, x, y) {
       let isValidPlacement = true;
 
-      if (direction === "vertical") {
-         if (y >= 0 && y <= 9 - ship.getShipLength()) {
-            for (let i = y; y < ship.getShipLength(); i++) {
-               if (this.grid[x][i] !== null) {
+      if (direction === "horizontal") {
+         if (y >= 0 && y <= 10 - ship.getShipLength()) {
+            let startingVal = y;
+            for (let i = 0; i < ship.getShipLength(); i++) {
+               if (this.grid[x][startingVal++] !== null) {
                   isValidPlacement = false;
                }
             }
-
             if (isValidPlacement) {
-               for (let i = y; y < ship.getShipLength(); i++) {
-                  this.grid[x][i] = ship;
+               startingVal = y;
+               for (let i = 0; i < ship.getShipLength(); i++) {
+                  this.grid[x][startingVal++] = ship;
                }
             }
          }
+
+         return;
       }
 
-      if (direction === "horizontal") {
+      if (direction === "vertical") {
          if (x >= 0 && x <= 9 - ship.getShipLength()) {
-            for (let i = x; x < ship.getShipLength(); i++) {
-               if (this.grid[i][y] !== null) {
+            let startingVal = x;
+            for (let i = 0; i < ship.getShipLength(); i++) {
+               if (this.grid[startingVal++][y] !== null) {
                   isValidPlacement = false;
+               }
+            }
+            if (isValidPlacement) {
+               startingVal = x;
+               for (let i = 0; i < ship.getShipLength(); i++) {
+                  this.grid[startingVal++][y] = ship;
                }
             }
          }
 
-         if (isValidPlacement) {
-            for (let i = x; x < ship.getShipLength(); i++) {
-               if (this.grid[i][y] !== null) {
-                  isValidPlacement = false;
-               }
-            }
-         }
+         return;
       }
    }
 }
