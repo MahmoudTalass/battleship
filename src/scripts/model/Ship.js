@@ -1,6 +1,6 @@
-class Ship {
+export default class Ship {
    hasSunk = false;
-   shipLength;
+   #shipLength;
    numOfHits;
 
    constructor(shipLength) {
@@ -18,6 +18,8 @@ class Ship {
    isSunk() {
       return this.hasSunk;
    }
-}
 
-export default Ship;
+   getShipLength() {
+      return this.shipLength;
+   }
+}
