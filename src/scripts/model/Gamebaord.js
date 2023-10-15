@@ -1,17 +1,18 @@
-class Gameboard {
+export default class Gameboard {
    grid = [];
 
    constructor() {
       for (let row = 0; row < 10; row++) {
+         this.grid.push([]);
+      }
+      for (let row = 0; row < 10; row++) {
          for (let col = 0; col < 10; col++) {
-            this.grid[row][col] = null;
+            this.grid[row].push(null);
          }
       }
    }
 
    placeShip(ship, direction, x, y) {
-      let xDirection = x;
-      let yDirection = y;
       let isValidPlacement = true;
 
       if (direction === "vertical") {
