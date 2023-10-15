@@ -1,7 +1,7 @@
 export default class Gameboard {
    grid = [];
    missedShotCoords = [];
-   numOfHits = 0;
+   hitsLeftUntilAllSink;
 
    constructor() {
       for (let row = 0; row < 10; row++) {
@@ -30,6 +30,7 @@ export default class Gameboard {
                for (let i = 0; i < ship.getShipLength(); i++) {
                   this.grid[x][startingVal++] = ship;
                }
+               this.hitsLeftUntilAllSink += ship.getShipLength();
             }
          }
 
@@ -49,6 +50,7 @@ export default class Gameboard {
                for (let i = 0; i < ship.getShipLength(); i++) {
                   this.grid[startingVal++][y] = ship;
                }
+               this.hitsLeftUntilAllSink += ship.getShipLength();
             }
          }
 
@@ -67,8 +69,12 @@ export default class Gameboard {
 
       this.grid[x][y].hit();
       this.grid[x][y] = "hit";
-      this.numOfHits++;
+      this.hitsLeftUntilAllSink--;
 
       return true;
+   }
+
+   haveAllSunk() {
+      return this.hitsLeftUntilAllSink === 0;
    }
 }
