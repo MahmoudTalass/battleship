@@ -1,5 +1,6 @@
 export default class Gameboard {
    grid = [];
+   missedShotCoords = [];
 
    constructor() {
       for (let row = 0; row < 10; row++) {
@@ -52,5 +53,20 @@ export default class Gameboard {
 
          return;
       }
+   }
+
+   receiveAttack(x, y) {
+      if (this.grid[x][y] == null) {
+         this.missedShotCoords.push({
+            x: x,
+            y: y,
+         });
+         return false;
+      }
+
+      this.grid[x][y].hit();
+      this.grid[x][y] = "hit";
+
+      return true;
    }
 }
