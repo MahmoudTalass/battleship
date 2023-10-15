@@ -21,4 +21,9 @@ describe("Gameboard tests", () => {
 
       expect(board.grid[5][4].numOfHits).toBe(1);
    });
+
+   test("Have all ships sunk", () => {
+      board.placeShip(new Ship(5), "vertical", 4, 4);
+      expect(board.haveAllSunk()).toBe(false);
+   });
 });
