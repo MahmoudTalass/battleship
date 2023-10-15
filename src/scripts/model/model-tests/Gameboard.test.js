@@ -1,10 +1,17 @@
+import Gameboard from "../Gamebaord";
+import Ship from "../Ship";
 /* eslint-disable no-undef */
 describe("Gameboard tests", () => {
-    let gameBoard;
-    beforeEach(()=> {
-        gameBoard = new Gameboard();
-    })
-    test("Place ship on board", ()=> {
-        expect
-    })
-})
+   let board;
+   beforeEach(() => {
+      board = new Gameboard();
+   });
+   test("Place ship on board", () => {
+      board.placeShip(new Ship(5), "vertical", 4, 4);
+      expect(board.grid[4][4]).toBeFalsy;
+      expect(board.grid[5][4]).toBeFalsy;
+      expect(board.grid[6][4]).toBeFalsy;
+      expect(board.grid[7][4]).toBeFalsy;
+      expect(board.grid[8][4]).toBeFalsy;
+   });
+});
