@@ -33,10 +33,21 @@ describe("Gameboard tests", () => {
    });
 
    test("Ship received hit", () => {
-      let ship = new Ship(5);
+      const ship = new Ship(5);
+
       board.placeShip(ship, "vertical", 4, 4);
       board.receiveAttack(5, 4);
+
       expect(ship.numOfHits).toBe(1);
+   });
+
+   test("Attack missed. View coordinates of missed attack", () => {
+      const ship = new Ship(5);
+      board.placeShip(ship, "vertical", 1, 1);
+      const wasHit = board.receiveAttack(3, 3);
+
+      expect(wasHit).toBe(false);
+      expect(board.getMissedAttackCoords()).toEqual({ x: 3, y: 4 });
    });
 
    test("Have all ships sunk", () => {
