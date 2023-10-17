@@ -47,7 +47,7 @@ describe("Gameboard tests", () => {
       const wasHit = board.receiveAttack(3, 3);
 
       expect(wasHit).toBe(false);
-      expect(board.getMissedAttackCoords()).toEqual({ x: 3, y: 4 });
+      expect(board.getMissedAttackCoords()).toEqual({ x: 3, y: 3 });
    });
 
    test("Have all ships sunk", () => {
