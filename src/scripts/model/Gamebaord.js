@@ -1,6 +1,6 @@
 export default class Gameboard {
    grid = [];
-   missedShotCoords = [];
+   missedAttackCoords = [];
    hitsLeftUntilAllSink;
 
    constructor() {
@@ -64,7 +64,7 @@ export default class Gameboard {
 
    receiveAttack(x, y) {
       if (this.grid[x][y] == null) {
-         this.missedShotCoords.push({
+         this.missedAttackCoords.push({
             x: x,
             y: y,
          });
@@ -80,5 +80,12 @@ export default class Gameboard {
 
    haveAllSunk() {
       return this.hitsLeftUntilAllSink === 0;
+   }
+
+   getMissedAttackCoords() {
+      return Object.assign(
+         {},
+         this.missedAttackCoords[this.missedAttackCoords.length - 1]
+      );
    }
 }
