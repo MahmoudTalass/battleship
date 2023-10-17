@@ -19,43 +19,47 @@ export default class Gameboard {
 
       if (direction === "horizontal") {
          if (y >= 0 && y <= 10 - ship.getShipLength()) {
-            let startingVal = y;
+            let startingCol = y;
             for (let i = 0; i < ship.getShipLength(); i++) {
-               if (this.grid[x][startingVal++] !== null) {
+               if (this.grid[x][startingCol++] !== null) {
                   isValidPlacement = false;
                }
             }
             if (isValidPlacement) {
-               startingVal = y;
+               startingCol = y;
                for (let i = 0; i < ship.getShipLength(); i++) {
-                  this.grid[x][startingVal++] = ship;
+                  this.grid[x][startingCol++] = ship;
                }
                this.hitsLeftUntilAllSink += ship.getShipLength();
+               return true;
             }
          }
 
-         return;
+         return false;
       }
 
       if (direction === "vertical") {
          if (x >= 0 && x <= 9 - ship.getShipLength()) {
-            let startingVal = x;
+            let startingRow = x;
             for (let i = 0; i < ship.getShipLength(); i++) {
-               if (this.grid[startingVal++][y] !== null) {
+               if (this.grid[startingRow++][y] !== null) {
                   isValidPlacement = false;
                }
             }
             if (isValidPlacement) {
-               startingVal = x;
+               startingRow = x;
                for (let i = 0; i < ship.getShipLength(); i++) {
-                  this.grid[startingVal++][y] = ship;
+                  this.grid[startingRow++][y] = ship;
                }
                this.hitsLeftUntilAllSink += ship.getShipLength();
+               return true;
             }
          }
 
-         return;
+         return false;
       }
+
+      return false;
    }
 
    receiveAttack(x, y) {
