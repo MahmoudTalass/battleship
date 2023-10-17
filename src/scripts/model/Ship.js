@@ -4,13 +4,13 @@ export default class Ship {
    numOfHits;
 
    constructor(shipLength) {
-      this.shipLength = shipLength;
+      this.#shipLength = shipLength;
       this.numOfHits = 0;
    }
 
    hit() {
       this.numOfHits++;
-      if (this.numOfHits === this.shipLength) {
+      if (this.numOfHits === this.#shipLength) {
          this.hasSunk = true;
       }
    }
@@ -20,6 +20,6 @@ export default class Ship {
    }
 
    getShipLength() {
-      return this.shipLength;
+      return this.#shipLength;
    }
 }
