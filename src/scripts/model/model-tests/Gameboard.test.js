@@ -6,13 +6,30 @@ describe("Gameboard tests", () => {
    beforeEach(() => {
       board = new Gameboard();
    });
-   test("Place ship on board", () => {
-      board.placeShip(new Ship(5), "vertical", 4, 4);
-      expect(board.grid[4][4]).toBeFalsy;
-      expect(board.grid[5][4]).toBeFalsy;
-      expect(board.grid[6][4]).toBeFalsy;
-      expect(board.grid[7][4]).toBeFalsy;
-      expect(board.grid[8][4]).toBeFalsy;
+   test("Place ship on board vertically", () => {
+      const ship = new Ship(5);
+      board.placeShip(ship, "vertical", 4, 4);
+      expect(board.grid[4][4]).toEqual(ship);
+      expect(board.grid[5][4]).toEqual(ship);
+      expect(board.grid[6][4]).toEqual(ship);
+      expect(board.grid[7][4]).toEqual(ship);
+      expect(board.grid[8][4]).toEqual(ship);
+   });
+
+   test("Place ship on board horizontally", () => {
+      const ship = new Ship(2);
+      board.placeShip(ship, "horizontal", 8, 8);
+
+      expect(board.grid[8][8]).toEqual(ship);
+      expect(board.grid[8][9]).toEqual(ship);
+   });
+
+   test("Ship should not be placed here", () => {
+      const ship = new Ship(5);
+      const isPlaced = board.placeShip(ship, "vertical", 9, 1);
+
+      expect(board.grid[9][1]).toEqual(null);
+      expect(isPlaced).toBe(false);
    });
 
    test("Ship received hit", () => {
