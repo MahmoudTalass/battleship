@@ -1,5 +1,5 @@
-import Gameboard from "../Gamebaord";
-import Ship from "../Ship";
+import Gameboard from "./Gamebaord";
+import Ship from "./Ship";
 /* eslint-disable no-undef */
 describe("Gameboard tests", () => {
    let board;
