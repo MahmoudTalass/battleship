@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
-class Player {
-   isTurn;
+export default class Player {
+   playerTurn = false;
 
+   isPlayerTurn() {
+      return this.playerTurn;
+   }
    attack(x, y) {}
 }
