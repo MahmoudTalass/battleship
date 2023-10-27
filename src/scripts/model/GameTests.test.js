@@ -55,3 +55,13 @@ describe("Gameboard tests", () => {
       expect(board.haveAllSunk()).toBe(false);
    });
 });
+
+describe("Ship tests", () => {
+   const ship = new Ship(5);
+
+   ship.hit();
+   ship.hit();
+   ship.hit();
+
+   expect(ship.numOfHits).toBe(3);
+});
