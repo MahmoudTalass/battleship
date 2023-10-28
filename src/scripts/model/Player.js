@@ -5,5 +5,12 @@ export default class Player {
    isPlayerTurn() {
       return this.playerTurn;
    }
-   attack(x, y) {}
+
+   switchPlayerTurns() {
+      this.playerTurn = !this.playerTurn;
+   }
+
+   attack(enemyBoard, x, y) {
+      return enemyBoard.receiveAttack(x, y);
+   }
 }
