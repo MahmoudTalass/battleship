@@ -68,14 +68,19 @@ export default class Gameboard {
             x: x,
             y: y,
          });
-         return false;
+         this.grid[x][y] = "X";
+         return "missed";
+      }
+
+      if (this.grid[x][y] == "X") {
+         return "already hit spot";
       }
 
       this.grid[x][y].hit();
-      this.grid[x][y] = "hit";
+      this.grid[x][y] = "X";
       this.hitsLeftUntilAllSink--;
 
-      return true;
+      return "received attack";
    }
 
    haveAllSunk() {
