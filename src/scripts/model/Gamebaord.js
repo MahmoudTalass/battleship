@@ -73,14 +73,14 @@ export default class Gameboard {
       }
 
       if (this.grid[x][y] == "X") {
-         return "already hit spot";
+         return "illegal";
       }
 
       this.grid[x][y].hit();
       this.grid[x][y] = "X";
       this.hitsLeftUntilAllSink--;
 
-      return "received attack";
+      return "received";
    }
 
    haveAllSunk() {
