@@ -46,7 +46,7 @@ describe("Gameboard tests", () => {
       board.placeShip(ship, "vertical", 1, 1);
       const wasHit = board.receiveAttack(3, 3);
 
-      expect(wasHit).toBe(false);
+      expect(wasHit).toBe("missed");
       expect(board.getMissedAttackCoords()).toEqual({ x: 3, y: 3 });
    });
 
