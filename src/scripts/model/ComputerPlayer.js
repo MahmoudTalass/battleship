@@ -10,6 +10,7 @@ export default class ComputerPlayer {
             continue;
          } else {
             isSuccessfulAttackMade = true;
+            return attackMessage;
          }
       }
    }
