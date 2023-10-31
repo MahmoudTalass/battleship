@@ -1,6 +1,7 @@
 import Gameboard from "./Gamebaord";
 import Player from "./Player";
 import Ship from "./Ship";
+import ComputerPlayer from "./ComputerPlayer";
 /* eslint-disable no-undef */
 
 describe("Player tests", () => {
@@ -39,5 +40,13 @@ describe("Player tests", () => {
       expect(player.attack(enemyBoard, 2, 3)).toBe("missed");
       expect(ship.numOfHits).toBe(0);
       expect(enemyBoard.grid[2][3]).toBe("X");
+   });
+
+   test("Random computer attack", () => {
+      const enemyBoard = new Gameboard();
+
+      const result = ComputerPlayer.randomAttack(player, enemyBoard);
+
+      expect(result).toBe("missed");
    });
 });
