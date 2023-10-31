@@ -1,0 +1,19 @@
+body {
+   min-height: 100vh;
+   display: grid;
+   grid-template-rows: 1fr auto;
+}
+
+.header {
+   font-size: 3rem;
+   text-align: center;
+   padding: 2rem;
+   border-bottom: 1px black dashed;
+   align-self: start;
+}
+
+.footer {
+   text-align: center;
+   padding: 1rem;
+   border-top: 1px black dashed;
+}
