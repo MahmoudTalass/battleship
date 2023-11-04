@@ -1,0 +1,14 @@
+.game-screen-container {
+   height: 100%;
+   width: 100%;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-template-rows: 1fr;
+   padding: 1rem;
+}
+
+.grid-square {
+   height: 1rem;
+   width: 1rem;
+   border: 1px solid black;
+}
