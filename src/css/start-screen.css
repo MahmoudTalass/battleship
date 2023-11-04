@@ -1,0 +1,17 @@
+.start-screen-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.start-game-btn {
+   padding: 1.2rem 2rem;
+   font-size: 1.2rem;
+   background-color: transparent;
+   border: 1px black solid;
+}
+
+.start-game-btn:hover {
+   background-color: black;
+   color: #fff;
+}
