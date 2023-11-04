@@ -43,4 +43,13 @@ function renderGameScreen() {
    mainScreenContainer.appendChild(gameScreenContainer);
 }
 
-export { renderGameScreen };
+function renderGridSquare(x, y) {
+   const gridSquare = document.createElement("div");
+   gridSquare.classList.add("grid-square");
+   gridSquare.setAttribute("data-x", x);
+   gridSquare.setAttribute("data-y", y);
+
+   return gridSquare;
+}
+
+export { renderGameScreen, renderGridSquare };
