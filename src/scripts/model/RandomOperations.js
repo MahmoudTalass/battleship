@@ -1,4 +1,4 @@
-export default class ComputerPlayer {
+export default class RandomOperations {
    static randomAttack(player, enemyBoard) {
       let isSuccessfulAttackMade = false;
 
