@@ -1,4 +1,4 @@
-import Ship from "./Ship";
+import Ship, { SHIP_LENGTHS } from "./Ship";
 
 export default class RandomOperations {
    static randomAttack(player, enemyBoard) {
@@ -18,7 +18,6 @@ export default class RandomOperations {
    }
 
    static placeShipsRandomly(playerBoard) {
-      const SHIP_LENGTHS = [2, 3, 3, 4, 5];
       const SHIP_DIRECTIONS = ["vertical", "horizontal"];
 
       let numOfPlacedShips = 0;
