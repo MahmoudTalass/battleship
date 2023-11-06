@@ -17,7 +17,7 @@ export default class RandomOperations {
       }
    }
 
-   static placeShipsRandomly(playerBoard) {
+   static placeAllShipsRandomly(playerBoard) {
       const SHIP_DIRECTIONS = ["vertical", "horizontal"];
 
       let numOfPlacedShips = 0;
@@ -34,6 +34,8 @@ export default class RandomOperations {
             numOfPlacedShips++;
          }
       }
+
+      return numOfPlacedShips == 5;
    }
 
    static #getRandomCoord() {
