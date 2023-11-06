@@ -1,3 +1,5 @@
+import Ship from "./Ship";
+
 export default class RandomOperations {
    static randomAttack(player, enemyBoard) {
       let isSuccessfulAttackMade = false;
@@ -11,6 +13,26 @@ export default class RandomOperations {
          } else {
             isSuccessfulAttackMade = true;
             return attackMessage;
+         }
+      }
+   }
+
+   static placeShipsRandomly(playerBoard) {
+      const SHIP_LENGTHS = [2, 3, 3, 4, 5];
+      const SHIP_DIRECTIONS = ["vertical", "horizontal"];
+
+      let numOfPlacedShips = 0;
+
+      while (numOfPlacedShips < 5) {
+         const ship = new Ship(SHIP_LENGTHS[numOfPlacedShips]);
+         const randomNum = Math.random() > 0.5 ? 1 : 0;
+         const shipDirection = SHIP_DIRECTIONS[randomNum];
+         const { x, y } = this.#getRandomCoord();
+
+         const isShipPlaced = playerBoard.placeShip(ship, shipDirection, x, y);
+
+         if (isShipPlaced) {
+            numOfPlacedShips++;
          }
       }
    }
