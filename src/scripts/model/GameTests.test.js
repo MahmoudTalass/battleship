@@ -1,4 +1,5 @@
 import Gameboard from "./Gamebaord";
+import RandomOperations from "./RandomOperations";
 import Ship from "./Ship";
 /* eslint-disable no-undef */
 describe("Gameboard tests", () => {
@@ -54,14 +55,21 @@ describe("Gameboard tests", () => {
       board.placeShip(new Ship(5), "vertical", 4, 4);
       expect(board.haveAllSunk()).toBe(false);
    });
+
+   test("All ship placed randomly", () => {
+      const result = RandomOperations.placeAllShipsRandomly(board);
+      expect(result).toBe(true);
+   });
 });
 
 describe("Ship tests", () => {
-   const ship = new Ship(5);
+   test("Ship was hit three times", () => {
+      const ship = new Ship(5);
 
-   ship.hit();
-   ship.hit();
-   ship.hit();
+      ship.hit();
+      ship.hit();
+      ship.hit();
 
-   expect(ship.numOfHits).toBe(3);
+      expect(ship.numOfHits).toBe(3);
+   });
 });
