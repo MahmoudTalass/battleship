@@ -1,4 +1,6 @@
-export default class Ship {
+const SHIP_LENGTHS = [2, 3, 3, 4, 5];
+
+class Ship {
    hasSunk = false;
    #shipLength;
    numOfHits;
@@ -23,3 +25,6 @@ export default class Ship {
       return this.#shipLength;
    }
 }
+
+export default Ship;
+export { SHIP_LENGTHS };
