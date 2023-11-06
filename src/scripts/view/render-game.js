@@ -6,7 +6,10 @@ function renderGameScreen() {
    gameScreenContainer.id = "game-screen-container";
 
    const playerBoardContainer = document.createElement("div");
-   playerBoardContainer.classList.add("player-board-container");
+   playerBoardContainer.classList.add(
+      "player-board-container",
+      "board-container"
+   );
    playerBoardContainer.id = "player-board-container";
 
    const playerBoard = document.createElement("div");
@@ -22,7 +25,10 @@ function renderGameScreen() {
    playerBoardContainer.appendChild(playerBoard);
 
    const enemyBoardContainer = document.createElement("div");
-   enemyBoardContainer.classList.add("enemy-board-container");
+   enemyBoardContainer.classList.add(
+      "enemy-board-container",
+      "board-container"
+   );
    enemyBoardContainer.id = "enemy-board-container";
 
    const enemyBoard = document.createElement("div");
