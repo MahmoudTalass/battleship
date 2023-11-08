@@ -1,4 +1,10 @@
-import { renderGridSquare } from "../view/render-game";
+import { renderGridSquare, renderGameScreen } from "../view/render-game";
+
+const playerBoard = null;
+const playerBoard = null;
+
+const enemy = null;
+const enemyBoard = null;
 
 function showGameboard(playerBoardElement, playerGrid) {
    for (let x = 0; x < 10; x++) {
@@ -14,4 +20,23 @@ function showGameboard(playerBoardElement, playerGrid) {
    }
 }
 
-export { showGameboard };
+function initiateGame() {
+   renderGameScreen();
+
+   const playerBoardElement = document.getElementById("player-board");
+   const enemyBoardElement = document.getElementById("enemy-board");
+
+   player = new Player();
+   playerBoard = new Gameboard();
+
+   enemy = new Player();
+   enemyBoard = new Gameboard();
+
+   RandomOperations.placeAllShipsRandomly(playerBoard);
+   RandomOperations.placeAllShipsRandomly(enemyBoard);
+
+   showGameboard(playerBoardElement, playerBoard.grid);
+   showGameboard(enemyBoardElement, enemyBoard.grid);
+}
+
+export { showGameboard, initiateGame };
