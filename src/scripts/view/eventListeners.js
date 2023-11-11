@@ -4,11 +4,15 @@ function loadEventListeners() {
    const enemyBoard = document.getElementById("enemy-board");
 
    enemyBoard.addEventListener("click", (e) => {
-      const square = e.target;
-      const isTargetSquare = square.className == "grid-square";
+      const squareElement = e.target;
+      const isTargetSquare = squareElement.className == "grid-square";
+      const boardName = squareElement.parentElement.id;
 
-      if (isTargetSquare) {
-         GameLoop();
+      const xCoordinate = squareElement.getAttribute("data-x");
+      const yCoordinate = squareElement.getAttribute("data-y");
+
+      if (boardName == "enemy-board" && isTargetSquare) {
+         GameLoop(squareElement, xCoordinate, yCoordinate);
       }
    });
 }
