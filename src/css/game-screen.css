@@ -27,3 +27,7 @@
 .grid-square {
    border: 1px solid black;
 }
+
+.enemy-board > .grid-square:hover {
+   background-color: black;
+}
