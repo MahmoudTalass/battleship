@@ -12,7 +12,7 @@ export default class RandomOperations {
             continue;
          } else {
             isSuccessfulAttackMade = true;
-            return attackMessage;
+            return { attackMessage, x, y };
          }
       }
    }
