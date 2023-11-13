@@ -12,7 +12,7 @@ function loadEventListeners() {
       const yCoordinate = squareElement.getAttribute("data-y");
 
       if (boardName == "enemy-board" && isTargetSquare) {
-         GameLoop(squareElement, xCoordinate, yCoordinate);
+         GameLoop(xCoordinate, yCoordinate);
       }
    });
 }
