@@ -1,10 +1,14 @@
-import { renderGridSquare, renderGameScreen } from "../view/render-game";
+import {
+   renderGridSquare,
+   renderGameScreen,
+   markMissedAttack,
+   markSuccessfulAttack,
+} from "../view/renderGame";
+import Player from "../model/Player";
+import RandomOperations from "../model/RandomOperations";
 
-const playerBoard = null;
-const playerBoard = null;
-
-const enemy = null;
-const enemyBoard = null;
+let player = null;
+let enemy = null;
 
 function showGameboard(playerBoardElement, playerGrid) {
    for (let x = 0; x < 10; x++) {
@@ -14,6 +18,9 @@ function showGameboard(playerBoardElement, playerGrid) {
             square.classList.add("water");
          } else {
             square.classList.add("ship");
+            if (playerBoardElement.id == "player-board") {
+               square.classList.add("player-ship");
+            }
          }
          playerBoardElement.appendChild(square);
       }
@@ -27,16 +34,25 @@ function initiateGame() {
    const enemyBoardElement = document.getElementById("enemy-board");
 
    player = new Player();
-   playerBoard = new Gameboard();
-
    enemy = new Player();
-   enemyBoard = new Gameboard();
 
-   RandomOperations.placeAllShipsRandomly(playerBoard);
-   RandomOperations.placeAllShipsRandomly(enemyBoard);
+   RandomOperations.placeAllShipsRandomly(player.board);
+   RandomOperations.placeAllShipsRandomly(enemy.board);
 
-   showGameboard(playerBoardElement, playerBoard.grid);
-   showGameboard(enemyBoardElement, enemyBoard.grid);
+   showGameboard(playerBoardElement, player.board.grid);
+   showGameboard(enemyBoardElement, enemy.board.grid);
 }
 
-export { showGameboard, initiateGame };
+function enemyAttack() {
+   const randomAttackInfo = RandomOperations.randomAttack(enemy, player.board);
+
+   if (randomAttackInfo.attackStatus == "missed") {
+      markMissedAttack(randomAttackInfo.x, randomAttackInfo.y);
+   } else {
+      markSuccessfulAttack(randomAttackInfo.x, randomAttackInfo.y);
+   }
+
+   enemy.switchPlayerTurns();
+}
+
+export { showGameboard, initiateGame, player, enemy, enemyAttack };
