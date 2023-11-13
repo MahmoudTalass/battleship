@@ -74,7 +74,7 @@ function markMissedAttack(x, y) {
 
 function markSuccessfulAttack(x, y) {
    const shipSquareElement = document.querySelector(
-      `[data-x="${x}"] [data-y="${y}"]`
+      `[data-x="${x}"][data-y="${y}"]`
    );
 
    const xIconImg = new Image();
