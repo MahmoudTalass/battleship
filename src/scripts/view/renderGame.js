@@ -1,3 +1,6 @@
+import xIcon from "../../icons/x-icon.png";
+import dotIcon from "../../icons/dot-icon.png";
+
 function renderGameScreen() {
    const mainScreenContainer = document.getElementById("main-screen");
 
@@ -58,4 +61,32 @@ function renderGridSquare(x, y) {
    return gridSquare;
 }
 
-export { renderGameScreen, renderGridSquare };
+function markMissedAttack(x, y) {
+   const missedSquareElement = document.querySelector(
+      `[data-x="${x}"] [data-y="${y}"]`
+   );
+   const dotIconImg = new Image();
+   dotIconImg.src = dotIcon;
+   dotIconImg.classList.add("icon");
+
+   missedSquareElement.appendChild(dotIconImg);
+}
+
+function markSuccessfulAttack(x, y) {
+   const shipSquareElement = document.querySelector(
+      `[data-x="${x}"] [data-y="${y}"]`
+   );
+
+   const xIconImg = new Image();
+   xIconImg.src = xIcon;
+   xIconImg.classList.add("icon");
+
+   shipSquareElement.appendChild(xIconImg);
+}
+
+export {
+   renderGameScreen,
+   renderGridSquare,
+   markMissedAttack,
+   markSuccessfulAttack,
+};
