@@ -21,13 +21,25 @@
    display: grid;
    grid-template-columns: repeat(10, 2.5rem);
    grid-template-rows: repeat(10, 2.5rem);
-   border: 1px solid black;
 }
 
 .grid-square {
-   border: 1px solid black;
+   border: 1px solid rgb(177, 175, 175);
 }
 
 .enemy-board > .grid-square:hover {
    background-color: black;
+}
+
+.player-ship {
+   border: 2px solid blue;
+}
+
+.icon {
+   width: 0.2rem;
+   height: 0.2rem;
+}
+
+.missed-attack {
+   background-color: gray;
 }
