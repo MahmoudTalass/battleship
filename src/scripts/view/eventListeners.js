@@ -5,13 +5,12 @@ function loadEventListeners() {
 
    enemyBoard.addEventListener("click", (e) => {
       const squareElement = e.target;
-      const isTargetSquare = squareElement.className == "grid-square";
-      const boardName = squareElement.parentElement.id;
+      const isTargetSquare = squareElement.classList.contains("grid-square");
 
-      const xCoordinate = squareElement.getAttribute("data-x");
-      const yCoordinate = squareElement.getAttribute("data-y");
+      const xCoordinate = Number(squareElement.getAttribute("data-x"));
+      const yCoordinate = Number(squareElement.getAttribute("data-y"));
 
-      if (boardName == "enemy-board" && isTargetSquare) {
+      if (isTargetSquare) {
          GameLoop(xCoordinate, yCoordinate);
       }
    });
