@@ -1,6 +1,3 @@
-import xIcon from "../../icons/x-icon.png";
-import dotIcon from "../../icons/dot-icon.png";
-
 function renderGameScreen() {
    const mainScreenContainer = document.getElementById("main-screen");
 
@@ -61,27 +58,40 @@ function renderGridSquare(x, y) {
    return gridSquare;
 }
 
-function markMissedAttack(x, y) {
-   const missedSquareElement = document.querySelector(
-      `[data-x="${x}"] [data-y="${y}"]`
-   );
-   const dotIconImg = new Image();
-   dotIconImg.src = dotIcon;
-   dotIconImg.classList.add("icon");
+function markMissedAttack(x, y, board) {
+   let missedSquareElement;
 
-   missedSquareElement.appendChild(dotIconImg);
+   if (board === "enemyBoard") {
+      const enemyBoard = document.getElementById("enemy-board");
+      missedSquareElement = enemyBoard.querySelector(
+         `[data-x="${x}"][data-y="${y}"]`
+      );
+   } else {
+      const playerBoard = document.getElementById("player-board");
+      missedSquareElement = playerBoard.querySelector(
+         `[data-x="${x}"][data-y="${y}"]`
+      );
+   }
+
+   missedSquareElement.classList.add("missed-attack");
 }
 
-function markSuccessfulAttack(x, y) {
-   const shipSquareElement = document.querySelector(
-      `[data-x="${x}"][data-y="${y}"]`
-   );
+function markSuccessfulAttack(x, y, board) {
+   let shipSquareElement;
 
-   const xIconImg = new Image();
-   xIconImg.src = xIcon;
-   xIconImg.classList.add("icon");
+   if (board === "enemyBoard") {
+      const enemyBoard = document.getElementById("enemy-board");
+      shipSquareElement = enemyBoard.querySelector(
+         `[data-x="${x}"][data-y="${y}"]`
+      );
+   } else {
+      const playerBoard = document.getElementById("player-board");
+      shipSquareElement = playerBoard.querySelector(
+         `[data-x="${x}"][data-y="${y}"]`
+      );
+   }
 
-   shipSquareElement.appendChild(xIconImg);
+   shipSquareElement.style.border = "2px solid red";
 }
 
 export {
