@@ -10,14 +10,14 @@ describe("Player tests", () => {
       player = new Player();
    });
    test("Should be player turn", () => {
-      player.switchPlayerTurns();
+      player.switchTurn();
 
       expect(player.isPlayerTurn()).toBe(true);
    });
 
    test("Should be enemy turn", () => {
-      player.switchPlayerTurns();
-      player.switchPlayerTurns();
+      player.switchTurn();
+      player.switchTurn();
 
       expect(player.isPlayerTurn()).toBe(false);
    });

@@ -9,7 +9,7 @@ export default class Player {
       return this.playerTurn;
    }
 
-   switchPlayerTurns() {
+   switchTurn() {
       this.playerTurn = !this.playerTurn;
    }
 
