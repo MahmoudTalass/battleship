@@ -44,4 +44,14 @@ export default class RandomOperations {
          y: Math.floor(Math.random() * 10),
       };
    }
+
+   static randomizeTurns(player1, player2) {
+      const randomNum = Math.floor(Math.random() * 100);
+
+      if (randomNum % 2 == 0) {
+         player1.switchTurn();
+      } else {
+         player2.switchTurn();
+      }
+   }
 }
