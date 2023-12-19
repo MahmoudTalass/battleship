@@ -17,7 +17,7 @@ export default class Player {
       return enemyBoard.receiveAttack(x, y);
    }
 
-   hasLost() {
+   hasLostMatch() {
       return this.board.haveAllSunk();
    }
 }
