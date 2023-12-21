@@ -7,6 +7,7 @@ import {
 import Player from "../model/Player";
 import RandomOperations from "../model/RandomOperations";
 import { loadEventListeners } from "../view/eventListeners";
+import { renderStartScreen } from "../view/startGameScreen";
 
 let player = null;
 let enemy = null;
@@ -30,6 +31,7 @@ function showGameboard(playerBoardElement, playerGrid) {
 
 function initiateGame() {
    renderGameScreen();
+   renderStartScreen();
 
    const playerBoardElement = document.getElementById("player-board");
    const enemyBoardElement = document.getElementById("enemy-board");
@@ -71,6 +73,16 @@ function switchPlayerTurns() {
    enemy.switchTurn();
 }
 
+function getMatchStatus() {
+   if (player.hasLostMatch()) {
+      return "lost";
+   } else if (enemy.hasLostMatch()) {
+      return "won";
+   }
+
+   return null;
+}
+
 export {
    showGameboard,
    initiateGame,
@@ -78,4 +90,5 @@ export {
    enemy,
    enemyAttack,
    switchPlayerTurns,
+   getMatchStatus,
 };
