@@ -1,7 +1,7 @@
 export default class Gameboard {
    grid = [];
    missedAttackCoords = [];
-   hitsLeftUntilAllSink;
+   hitsLeftUntilAllSink = 0;
 
    constructor() {
       for (let row = 0; row < 10; row++) {
