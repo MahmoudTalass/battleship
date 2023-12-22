@@ -83,6 +83,12 @@ function getMatchStatus() {
    return null;
 }
 
+function disableAttackEventListeners() {
+   const enemyBoard = document.getElementById("enemy-board");
+
+   enemyBoard.removeEventListener("click");
+}
+
 export {
    showGameboard,
    initiateGame,
@@ -91,4 +97,5 @@ export {
    enemyAttack,
    switchPlayerTurns,
    getMatchStatus,
+   disableAttackEventListeners,
 };
