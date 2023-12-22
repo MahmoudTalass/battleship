@@ -1,3 +1,5 @@
+import dot from "./../../icons/circle-small.png";
+
 function renderGameScreen() {
    const mainScreenContainer = document.getElementById("main-screen");
 
@@ -73,6 +75,10 @@ function markMissedAttack(x, y, board) {
       );
    }
 
+   let img = new Image();
+   img.src = dot;
+
+   missedSquareElement.appendChild(img);
    missedSquareElement.classList.add("missed-attack");
 }
 
@@ -91,7 +97,47 @@ function markSuccessfulAttack(x, y, board) {
       );
    }
 
-   shipSquareElement.style.border = "2px solid red";
+   shipSquareElement.classList.add("successful-attack");
+}
+
+function displayWinningScreen() {
+   const mainScreenContainer = document.getElementById("main-screen");
+
+   const gameOverScreenContainer = document.createElement("div");
+   gameOverScreenContainer.classList.add("gameover-screen-container");
+
+   const winningMessage = document.createElement("p");
+   winningMessage.classList.add("game-status-message");
+   winningMessage.textContent = "You have won!";
+
+   const playAgainBtn = document.createElement("button");
+   playAgainBtn.classList.add("play-again-btn");
+   playAgainBtn.textContent = "Play again";
+
+   gameOverScreenContainer.appendChild(winningMessage);
+   gameOverScreenContainer.appendChild(playAgainBtn);
+
+   mainScreenContainer.appendChild(gameOverScreenContainer);
+}
+
+function displayLosingScreen() {
+   const mainScreenContainer = document.getElementById("main-screen");
+
+   const gameOverScreenContainer = document.createElement("div");
+   gameOverScreenContainer.classList.add("gameover-screen-container");
+
+   const losingMessage = document.createElement("p");
+   losingMessage.classList.add("game-status-message");
+   losingMessage.textContent = "You lose";
+
+   const playAgainBtn = document.createElement("button");
+   playAgainBtn.classList.add("play-again-btn");
+   playAgainBtn.textContent = "Play again";
+
+   gameOverScreenContainer.appendChild(losingMessage);
+   gameOverScreenContainer.appendChild(playAgainBtn);
+
+   mainScreenContainer.appendChild(gameOverScreenContainer);
 }
 
 export {
@@ -99,4 +145,6 @@ export {
    renderGridSquare,
    markMissedAttack,
    markSuccessfulAttack,
+   displayWinningScreen,
+   displayLosingScreen,
 };
