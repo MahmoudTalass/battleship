@@ -3,13 +3,15 @@ import {
    renderGameScreen,
    markMissedAttack,
    markSuccessfulAttack,
+   displayShipPlacementSelection,
 } from "../view/renderGame";
 import Player from "../model/Player";
 import RandomOperations from "../model/RandomOperations";
-import { loadEventListeners } from "../view/eventListeners";
+import { loadAttackEventListeners } from "../view/eventListeners";
 import { renderStartScreen } from "../view/startGameScreen";
+import Ship from "../model/Ship";
 
-let player = null;
+let player = new Player();
 let enemy = null;
 
 function showGameboard(playerBoardElement, playerGrid) {
@@ -29,6 +31,28 @@ function showGameboard(playerBoardElement, playerGrid) {
    }
 }
 
+function placePlayerShip(x, y, shipSize, direction) {
+   let isPlacementSuccessful = player.board.placeShip(
+      new Ship(shipSize),
+      direction,
+      x,
+      y
+   );
+
+   if (isPlacementSuccessful) {
+      if (direction === "vertical") {
+         for (let i = y; i < y + shipSize; i++) {
+            displayShipPlacementSelection(x, i);
+         }
+      } else {
+         for (let i = x; i < x + shipSize; i++) {
+            displayShipPlacementSelection(i, y);
+         }
+      }
+   }
+   return isPlacementSuccessful;
+}
+
 function initiateGame() {
    renderGameScreen();
    renderStartScreen();
@@ -36,12 +60,10 @@ function initiateGame() {
    const playerBoardElement = document.getElementById("player-board");
    const enemyBoardElement = document.getElementById("enemy-board");
 
-   player = new Player();
    enemy = new Player();
 
    RandomOperations.randomizeTurns(player, enemy);
 
-   RandomOperations.placeAllShipsRandomly(player.board);
    RandomOperations.placeAllShipsRandomly(enemy.board);
 
    showGameboard(playerBoardElement, player.board.grid);
@@ -50,7 +72,7 @@ function initiateGame() {
    if (enemy.isPlayerTurn()) {
       enemyAttack();
    }
-   loadEventListeners();
+   loadAttackEventListeners();
 }
 
 function enemyAttack() {
@@ -98,4 +120,5 @@ export {
    switchPlayerTurns,
    getMatchStatus,
    disableAttackEventListeners,
+   placePlayerShip,
 };
