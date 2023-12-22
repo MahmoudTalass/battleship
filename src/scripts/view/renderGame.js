@@ -140,6 +140,15 @@ function displayLosingScreen() {
    mainScreenContainer.appendChild(gameOverScreenContainer);
 }
 
+function displayShipPlacementSelection(x, y) {
+   const shipPlacementBoard = document.getElementById("ship-placement-board");
+   let gridSquare = shipPlacementBoard.querySelector(
+      `[data-x="${x}"][data-y="${y}"]`
+   );
+
+   gridSquare.classList.add("player-ship");
+}
+
 export {
    renderGameScreen,
    renderGridSquare,
@@ -147,4 +156,5 @@ export {
    markSuccessfulAttack,
    displayWinningScreen,
    displayLosingScreen,
+   displayShipPlacementSelection,
 };
