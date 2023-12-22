@@ -1,9 +1,16 @@
-import { markMissedAttack, markSuccessfulAttack } from "../view/renderGame";
+import {
+   displayLosingScreen,
+   displayWinningScreen,
+   markMissedAttack,
+   markSuccessfulAttack,
+} from "../view/renderGame";
 import {
    player,
    enemy,
    enemyAttack,
    switchPlayerTurns,
+   getMatchStatus,
+   disableAttackEventListeners,
 } from "./GameController";
 
 export default function GameLoop(x, y) {
@@ -18,8 +25,18 @@ export default function GameLoop(x, y) {
          markSuccessfulAttack(x, y, "enemyBoard");
       }
 
+      if (getMatchStatus() === "lost") {
+         displayLosingScreen();
+         disableAttackEventListeners();
+         return;
+      } else if (getMatchStatus() === "won") {
+         displayWinningScreen();
+         disableAttackEventListeners();
+         return;
+      }
+
       switchPlayerTurns();
-      enemyAttack();
+      setTimeout(enemyAttack, 600);
    } else {
       return;
    }
