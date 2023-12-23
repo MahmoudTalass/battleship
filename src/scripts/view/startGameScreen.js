@@ -9,6 +9,7 @@ function renderStartScreen() {
 
    const grid = document.createElement("div");
    grid.classList.add("board");
+   grid.classList.add("ship-placement-board");
    grid.id = "ship-placement-board";
 
    for (let y = 0; y < 10; y++) {
@@ -17,11 +18,16 @@ function renderStartScreen() {
       }
    }
 
+   const shipPlacementHighlight = document.createElement("div");
+   shipPlacementHighlight.classList.add("ship-placement-highlight");
+   shipPlacementHighlight.id = "ship-placement-highlight";
+
    const directionBtn = document.createElement("button");
    directionBtn.classList.add("direction-btn");
    directionBtn.id = "direction-btn";
    directionBtn.textContent = "vertical";
 
+   startScreenContainer.appendChild(shipPlacementHighlight);
    startScreenContainer.appendChild(directionBtn);
    startScreenContainer.appendChild(grid);
    mainScreenContainer.appendChild(startScreenContainer);
