@@ -14,7 +14,7 @@ export default class Gameboard {
       }
    }
 
-   placeShip(ship, direction, x, y) {
+   placeShip(ship, direction, y, x) {
       let isValidPlacement = true;
 
       if (direction === "horizontal") {
@@ -39,7 +39,7 @@ export default class Gameboard {
       }
 
       if (direction === "vertical") {
-         if (x >= 0 && x <= 9 - ship.getShipLength()) {
+         if (x >= 0 && x <= 10 - ship.getShipLength()) {
             let startingRow = x;
             for (let i = 0; i < ship.getShipLength(); i++) {
                if (this.grid[startingRow++][y] !== null) {
