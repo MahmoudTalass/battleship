@@ -15,8 +15,8 @@ let player = new Player();
 let enemy = null;
 
 function showGameboard(playerBoardElement, playerGrid) {
-   for (let y = 0; y < 10; y++) {
-      for (let x = 0; x < 10; x++) {
+   for (let x = 0; x < 10; x++) {
+      for (let y = 0; y < 10; y++) {
          const square = renderGridSquare(x, y);
          if (playerGrid[x][y] === null) {
             square.classList.add("water");
