@@ -112,6 +112,7 @@ function displayWinningScreen() {
 
    const playAgainBtn = document.createElement("button");
    playAgainBtn.classList.add("play-again-btn");
+   playAgainBtn.id = "play-again-btn";
    playAgainBtn.textContent = "Play again";
 
    gameOverScreenContainer.appendChild(winningMessage);
@@ -132,6 +133,7 @@ function displayLosingScreen() {
 
    const playAgainBtn = document.createElement("button");
    playAgainBtn.classList.add("play-again-btn");
+   playAgainBtn.id = "play-again-btn";
    playAgainBtn.textContent = "Play again";
 
    gameOverScreenContainer.appendChild(losingMessage);
