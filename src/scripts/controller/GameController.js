@@ -8,7 +8,6 @@ import {
 import Player from "../model/Player";
 import RandomOperations from "../model/RandomOperations";
 import { loadAttackEventListeners } from "../view/eventListeners";
-import { renderStartScreen } from "../view/startGameScreen";
 import Ship from "../model/Ship";
 
 let player = new Player();
@@ -55,7 +54,6 @@ function placePlayerShip(x, y, shipSize, direction) {
 
 function initiateGame() {
    renderGameScreen();
-   renderStartScreen();
 
    const playerBoardElement = document.getElementById("player-board");
    const enemyBoardElement = document.getElementById("enemy-board");
