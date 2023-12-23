@@ -4,5 +4,9 @@ import "./css/page-template.css";
 import "./css/start-screen.css";
 import "./css/game-screen.css";
 import { initiateGame } from "./scripts/controller/GameController";
+import { ShipPlacementEvents } from "./scripts/view/eventListeners";
+import { renderStartScreen } from "./scripts/view/startGameScreen";
 
-initiateGame();
+renderStartScreen();
+ShipPlacementEvents.changeShipDirectionEventListener();
+ShipPlacementEvents.shipPlacementEventListener();
