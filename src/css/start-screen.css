@@ -1,17 +1,25 @@
 .start-screen-container {
    display: flex;
+   flex-direction: column;
    justify-content: center;
    align-items: center;
+   gap: 2rem;
 }
 
-.start-game-btn {
-   padding: 1.2rem 2rem;
-   font-size: 1.2rem;
-   background-color: transparent;
-   border: 1px black solid;
+.direction-btn {
+   padding: 1rem 1.5rem;
+   font-size: 1rem;
 }
 
-.start-game-btn:hover {
-   background-color: black;
-   color: #fff;
+/* .ship-placement-board:hover {
+   cursor: none;
+} */
+
+.ship-placement-highlight {
+   position: absolute;
+   transform: translate(-50%, -50%);
+   display: none;
+   width: 40px;
+   height: 80px;
+   background-color: rgb(36, 180, 36);
 }
