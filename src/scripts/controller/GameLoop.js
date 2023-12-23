@@ -1,3 +1,4 @@
+import { loadRestartGameEventListener } from "../view/eventListeners";
 import {
    displayLosingScreen,
    displayWinningScreen,
@@ -28,10 +29,12 @@ export default function GameLoop(x, y) {
       if (getMatchStatus() === "lost") {
          displayLosingScreen();
          disableAttackEventListeners();
+         loadRestartGameEventListener();
          return;
       } else if (getMatchStatus() === "won") {
          displayWinningScreen();
          disableAttackEventListeners();
+         loadRestartGameEventListener();
          return;
       }
 
