@@ -8,5 +8,6 @@ import { ShipPlacementEvents } from "./scripts/view/eventListeners";
 import { renderStartScreen } from "./scripts/view/startGameScreen";
 
 renderStartScreen();
-ShipPlacementEvents.changeShipDirectionEventListener();
-ShipPlacementEvents.shipPlacementEventListener();
+const shipPlacementEvents = new ShipPlacementEvents();
+shipPlacementEvents.changeShipDirectionEventListener();
+shipPlacementEvents.shipPlacementEventListener();
