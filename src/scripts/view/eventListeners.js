@@ -1,7 +1,6 @@
 import { initiateGame, placePlayerShip } from "../controller/GameController";
 import GameLoop from "../controller/GameLoop";
 import { SHIP_LENGTHS } from "../model/Ship";
-import { highlightShipPlacement } from "./renderGame";
 
 function loadAttackEventListeners() {
    const enemyBoard = document.getElementById("enemy-board");
@@ -49,6 +48,20 @@ class ShipPlacementEvents {
 
             if (isPlacementSuccessful) {
                this.indexOfShipBeingProcessed++;
+               const shipPlacementHighlight = document.getElementById(
+                  "ship-placement-highlight"
+               );
+               if (this.shipPlacementDirection === "horizontal") {
+                  shipPlacementHighlight.style.width = `${
+                     40 * SHIP_LENGTHS[this.indexOfShipBeingProcessed]
+                  }px`;
+                  shipPlacementHighlight.style.height = "40px";
+               } else {
+                  shipPlacementHighlight.style.height = `${
+                     40 * SHIP_LENGTHS[this.indexOfShipBeingProcessed]
+                  }px`;
+                  shipPlacementHighlight.style.width = "40px";
+               }
             }
          }
          console.log(this.indexOfShipBeingProcessed);
@@ -58,18 +71,21 @@ class ShipPlacementEvents {
          }
       });
 
-      shipPlacementBoard.addEventListener("mouseover", (e) => {
-         console.log("nouse over");
-         const squareElement = e.target;
-         const isTargetSquare = squareElement.classList.contains("grid-square");
+      shipPlacementBoard.addEventListener("mousemove", (e) => {
+         const shipPlacementHighlight = document.getElementById(
+            "ship-placement-highlight"
+         );
+         shipPlacementHighlight.style.display = "block";
 
-         if (isTargetSquare) {
-            highlightShipPlacement(
-               e,
-               this.indexOfShipBeingProcessed,
-               this.shipPlacementDirection
-            );
-         }
+         shipPlacementHighlight.style.left = `${e.clientX}px`;
+         shipPlacementHighlight.style.top = `${e.clientY}px`;
+      });
+
+      shipPlacementBoard.addEventListener("mouseout", () => {
+         const shipPlacementHighlight = document.getElementById(
+            "ship-placement-highlight"
+         );
+         shipPlacementHighlight.style.display = "none";
       });
    }
    static changeShipDirectionEventListener() {
@@ -81,6 +97,20 @@ class ShipPlacementEvents {
                ? "horizontal"
                : "vertical";
          changeShipDirectionBtn.textContent = this.shipPlacementDirection;
+         const shipPlacementHighlight = document.getElementById(
+            "ship-placement-highlight"
+         );
+         if (this.shipPlacementDirection === "horizontal") {
+            shipPlacementHighlight.style.width = `${
+               40 * SHIP_LENGTHS[this.indexOfShipBeingProcessed]
+            }px`;
+            shipPlacementHighlight.style.height = "40px";
+         } else {
+            shipPlacementHighlight.style.height = `${
+               40 * SHIP_LENGTHS[this.indexOfShipBeingProcessed]
+            }px`;
+            shipPlacementHighlight.style.width = "40px";
+         }
       });
    }
 }
