@@ -7,7 +7,10 @@ import {
 } from "../view/renderGame";
 import Player from "../model/Player";
 import RandomOperations from "../model/RandomOperations";
-import { loadAttackEventListeners } from "../view/eventListeners";
+import {
+   attackTargetHandler,
+   loadAttackEventListeners,
+} from "../view/eventListeners";
 import Ship from "../model/Ship";
 
 let player = new Player();
@@ -88,6 +91,10 @@ function enemyAttack() {
    switchPlayerTurns();
 }
 
+function resetPlayer() {
+   player = new Player();
+}
+
 function switchPlayerTurns() {
    player.switchTurn();
    enemy.switchTurn();
@@ -106,7 +113,7 @@ function getMatchStatus() {
 function disableAttackEventListeners() {
    const enemyBoard = document.getElementById("enemy-board");
 
-   enemyBoard.removeEventListener("click");
+   enemyBoard.removeEventListener("click", attackTargetHandler);
 }
 
 export {
@@ -119,4 +126,5 @@ export {
    getMatchStatus,
    disableAttackEventListeners,
    placePlayerShip,
+   resetPlayer,
 };

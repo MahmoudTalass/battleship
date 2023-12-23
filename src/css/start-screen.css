@@ -11,10 +11,6 @@
    font-size: 1rem;
 }
 
-/* .ship-placement-board:hover {
-   cursor: none;
-} */
-
 .ship-placement-highlight {
    position: absolute;
    transform: translate(-50%, -50%);
