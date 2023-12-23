@@ -77,8 +77,3 @@
    font-size: 1.2rem;
    color: black;
 }
-
-.ship-placement-highlight {
-   position: fixed;
-   transition: transform 0.2s;
-}
