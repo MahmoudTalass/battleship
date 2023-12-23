@@ -1,28 +1,36 @@
-import { initiateGame, placePlayerShip } from "../controller/GameController";
+import {
+   initiateGame,
+   placePlayerShip,
+   resetPlayer,
+} from "../controller/GameController";
 import GameLoop from "../controller/GameLoop";
 import { SHIP_LENGTHS } from "../model/Ship";
+import { renderStartScreen } from "./startGameScreen";
 
 function loadAttackEventListeners() {
    const enemyBoard = document.getElementById("enemy-board");
+   enemyBoard.addEventListener("click", attackTargetHandler);
+}
 
-   enemyBoard.addEventListener("click", (e) => {
-      const squareElement = e.target;
-      const isTargetSquare = squareElement.classList.contains("grid-square");
+function attackTargetHandler(e) {
+   const squareElement = e.target;
+   const isTargetSquare = squareElement.classList.contains("grid-square");
 
-      const xCoordinate = Number(squareElement.getAttribute("data-x"));
-      const yCoordinate = Number(squareElement.getAttribute("data-y"));
+   const xCoordinate = Number(squareElement.getAttribute("data-x"));
+   const yCoordinate = Number(squareElement.getAttribute("data-y"));
 
-      if (isTargetSquare) {
-         GameLoop(xCoordinate, yCoordinate);
-      }
-   });
+   if (isTargetSquare) {
+      GameLoop(xCoordinate, yCoordinate);
+   }
 }
 
 class ShipPlacementEvents {
-   static shipPlacementDirection = "vertical";
-   static indexOfShipBeingProcessed = 0;
+   constructor() {
+      this.shipPlacementDirection = "vertical";
+      this.indexOfShipBeingProcessed = 0;
+   }
 
-   static shipPlacementEventListener() {
+   shipPlacementEventListener() {
       const shipPlacementBoard = document.getElementById(
          "ship-placement-board"
       );
@@ -88,7 +96,7 @@ class ShipPlacementEvents {
          shipPlacementHighlight.style.display = "none";
       });
    }
-   static changeShipDirectionEventListener() {
+   changeShipDirectionEventListener() {
       const changeShipDirectionBtn = document.getElementById("direction-btn");
 
       changeShipDirectionBtn.addEventListener("click", () => {
@@ -115,16 +123,24 @@ class ShipPlacementEvents {
    }
 }
 
-export { loadAttackEventListeners, ShipPlacementEvents };
+function loadRestartGameEventListener() {
+   const playAgainBtn = document.getElementById("play-again-btn");
 
-/**
- * figure out a way to highlight or show the player what kind of ship they are placing.
- * If you find a way of highlighting or displaying the ship legnth over the mouse as
- * the player is hovering over the board, that would be best.
- *
- *
- *
- * URGENT!!!
- * go back to the ship placement function and inspect what could be wrong. the ships are being placed
- * in the opposite direction, and player isn't able to place ships where they should be able to be placed.
- */
+   playAgainBtn.addEventListener("click", () => {
+      resetPlayer();
+      const mainScreenContainer = document.getElementById("main-screen");
+      mainScreenContainer.replaceChildren();
+
+      renderStartScreen();
+      const shipPlacementEvents = new ShipPlacementEvents();
+      shipPlacementEvents.changeShipDirectionEventListener();
+      shipPlacementEvents.shipPlacementEventListener();
+   });
+}
+
+export {
+   loadAttackEventListeners,
+   ShipPlacementEvents,
+   loadRestartGameEventListener,
+   attackTargetHandler,
+};
