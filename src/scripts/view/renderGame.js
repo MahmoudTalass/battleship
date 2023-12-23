@@ -1,3 +1,4 @@
+import { SHIP_LENGTHS } from "../model/Ship";
 import dot from "./../../icons/circle-small.png";
 
 function renderGameScreen() {
@@ -149,6 +150,24 @@ function displayShipPlacementSelection(x, y) {
    gridSquare.classList.add("player-ship");
 }
 
+function highlightShipPlacement(e, index, shipPlacementDirection) {
+   debugger;
+   const currentShipLength = SHIP_LENGTHS[index];
+   const mainScreenContainer = document.getElementById("main-screen");
+
+   const ship = document.createElement("div");
+   ship.classList.add("ship-placement-highlight");
+
+   if (shipPlacementDirection === "vertical") {
+      console.log("yes");
+      ship.style.padding = `1rem ${currentShipLength}`;
+      ship.style.color = "green";
+      ship.style.trasform = `translateY(${e.clientX - 80}px)`;
+      ship.style.trasform = `translateX(${e.clientX - 100}px)`;
+      mainScreenContainer.appendChild(ship);
+   }
+}
+
 export {
    renderGameScreen,
    renderGridSquare,
@@ -157,4 +176,5 @@ export {
    displayWinningScreen,
    displayLosingScreen,
    displayShipPlacementSelection,
+   highlightShipPlacement,
 };
