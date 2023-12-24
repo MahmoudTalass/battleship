@@ -48,6 +48,6 @@ describe("Player tests", () => {
       const result = RandomOperations.randomAttack(player, enemyBoard);
 
       expect(result.attackMessage).toBe("missed");
-      expect(enemyBoard.grid[result.x][result.y]).toBe("X");
+      expect(enemyBoard.grid[result.row][result.col]).toBe("X");
    });
 });

@@ -27,10 +27,10 @@ describe("Gameboard tests", () => {
 
    test("Ship should not be placed here", () => {
       const ship = new Ship(5);
-      const isPlaced = board.placeShip(ship, "vertical", 9, 1);
+      const isPlaced = board.placeShip(ship, "vertical", 1, 9);
 
-      expect(board.grid[9][1]).toEqual(null);
-      expect(isPlaced).toBe(false);
+      expect(board.grid[1][9]).toEqual(ship);
+      expect(isPlaced).toBe(true);
    });
 
    test("Ship received hit", () => {
@@ -48,7 +48,7 @@ describe("Gameboard tests", () => {
       const wasHit = board.receiveAttack(3, 3);
 
       expect(wasHit).toBe("missed");
-      expect(board.getMissedAttackCoords()).toEqual({ x: 3, y: 3 });
+      expect(board.getMissedAttackCoords()).toEqual({ row: 3, col: 3 });
    });
 
    test("Have all ships sunk", () => {
