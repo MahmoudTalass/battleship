@@ -14,21 +14,21 @@ export default class Gameboard {
       }
    }
 
-   placeShip(ship, direction, y, x) {
+   placeShip(ship, direction, row, col) {
       let isValidPlacement = true;
 
       if (direction === "horizontal") {
-         if (y >= 0 && y <= 10 - ship.getShipLength()) {
-            let startingCol = y;
+         if (col >= 0 && col <= 10 - ship.getShipLength()) {
+            let startingCol = col;
             for (let i = 0; i < ship.getShipLength(); i++) {
-               if (this.grid[x][startingCol++] !== null) {
+               if (this.grid[row][startingCol++] !== null) {
                   isValidPlacement = false;
                }
             }
             if (isValidPlacement) {
-               startingCol = y;
+               startingCol = col;
                for (let i = 0; i < ship.getShipLength(); i++) {
-                  this.grid[x][startingCol++] = ship;
+                  this.grid[row][startingCol++] = ship;
                }
                this.hitsLeftUntilAllSink += ship.getShipLength();
                return true;
@@ -39,17 +39,17 @@ export default class Gameboard {
       }
 
       if (direction === "vertical") {
-         if (x >= 0 && x <= 10 - ship.getShipLength()) {
-            let startingRow = x;
+         if (row >= 0 && row <= 10 - ship.getShipLength()) {
+            let startingRow = row;
             for (let i = 0; i < ship.getShipLength(); i++) {
-               if (this.grid[startingRow++][y] !== null) {
+               if (this.grid[startingRow++][col] !== null) {
                   isValidPlacement = false;
                }
             }
             if (isValidPlacement) {
-               startingRow = x;
+               startingRow = row;
                for (let i = 0; i < ship.getShipLength(); i++) {
-                  this.grid[startingRow++][y] = ship;
+                  this.grid[startingRow++][col] = ship;
                }
                this.hitsLeftUntilAllSink += ship.getShipLength();
                return true;
@@ -62,22 +62,22 @@ export default class Gameboard {
       return false;
    }
 
-   receiveAttack(x, y) {
-      if (this.grid[x][y] == null) {
+   receiveAttack(row, col) {
+      if (this.grid[row][col] == null) {
          this.missedAttackCoords.push({
-            x: x,
-            y: y,
+            row: row,
+            col: col,
          });
-         this.grid[x][y] = "X";
+         this.grid[row][col] = "X";
          return "missed";
       }
 
-      if (this.grid[x][y] == "X") {
+      if (this.grid[row][col] == "X") {
          return "illegal";
       }
 
-      this.grid[x][y].hit();
-      this.grid[x][y] = "X";
+      this.grid[row][col].hit();
+      this.grid[row][col] = "X";
       this.hitsLeftUntilAllSink--;
 
       return "received";

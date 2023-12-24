@@ -5,14 +5,14 @@ export default class RandomOperations {
       let isSuccessfulAttackMade = false;
 
       while (!isSuccessfulAttackMade) {
-         let { x, y } = this.#getRandomCoord();
-         let attackMessage = player.attack(enemyBoard, x, y);
+         let { row, col } = this.#getRandomCoord();
+         let attackMessage = player.attack(enemyBoard, row, col);
 
          if (attackMessage == "illegal") {
             continue;
          } else {
             isSuccessfulAttackMade = true;
-            return { attackMessage, x, y };
+            return { attackMessage, row, col };
          }
       }
    }
@@ -26,9 +26,14 @@ export default class RandomOperations {
          const ship = new Ship(SHIP_LENGTHS[numOfPlacedShips]);
          const randomNum = Math.random() > 0.5 ? 1 : 0;
          const shipDirection = SHIP_DIRECTIONS[randomNum];
-         const { x, y } = this.#getRandomCoord();
+         const { row, col } = this.#getRandomCoord();
 
-         const isShipPlaced = playerBoard.placeShip(ship, shipDirection, x, y);
+         const isShipPlaced = playerBoard.placeShip(
+            ship,
+            shipDirection,
+            row,
+            col
+         );
 
          if (isShipPlaced) {
             numOfPlacedShips++;
@@ -40,8 +45,8 @@ export default class RandomOperations {
 
    static #getRandomCoord() {
       return {
-         x: Math.floor(Math.random() * 10),
-         y: Math.floor(Math.random() * 10),
+         row: Math.floor(Math.random() * 10),
+         col: Math.floor(Math.random() * 10),
       };
    }
 

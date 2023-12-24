@@ -14,16 +14,16 @@ import {
    disableAttackEventListeners,
 } from "./GameController";
 
-export default function GameLoop(x, y) {
+export default function GameLoop(row, col) {
    if (player.isPlayerTurn()) {
-      let attackStatus = player.attack(enemy.board, x, y);
+      let attackStatus = player.attack(enemy.board, row, col);
 
       if (attackStatus == "illegal") {
          return;
       } else if (attackStatus == "missed") {
-         markMissedAttack(x, y, "enemyBoard");
+         markMissedAttack(row, col, "enemyBoard");
       } else if (attackStatus == "received") {
-         markSuccessfulAttack(x, y, "enemyBoard");
+         markSuccessfulAttack(row, col, "enemyBoard");
       }
 
       if (getMatchStatus() === "lost") {

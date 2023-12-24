@@ -13,8 +13,8 @@ export default class Player {
       this.playerTurn = !this.playerTurn;
    }
 
-   attack(enemyBoard, x, y) {
-      return enemyBoard.receiveAttack(x, y);
+   attack(enemyBoard, row, col) {
+      return enemyBoard.receiveAttack(row, col);
    }
 
    hasLostMatch() {

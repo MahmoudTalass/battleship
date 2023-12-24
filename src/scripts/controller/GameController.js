@@ -33,22 +33,22 @@ function showGameboard(playerBoardElement, playerGrid) {
    }
 }
 
-function placePlayerShip(x, y, shipSize, direction) {
+function placePlayerShip(row, col, shipSize, direction) {
    let isPlacementSuccessful = player.board.placeShip(
       new Ship(shipSize),
       direction,
-      x,
-      y
+      row,
+      col
    );
 
    if (isPlacementSuccessful) {
       if (direction === "vertical") {
-         for (let i = y; i < y + shipSize; i++) {
-            displayShipPlacementSelection(x, i);
+         for (let i = row; i < row + shipSize; i++) {
+            displayShipPlacementSelection(i, col);
          }
       } else {
-         for (let i = x; i < x + shipSize; i++) {
-            displayShipPlacementSelection(i, y);
+         for (let i = col; i < col + shipSize; i++) {
+            displayShipPlacementSelection(row, i);
          }
       }
    }
