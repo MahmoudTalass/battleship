@@ -51,27 +51,27 @@ function renderGameScreen() {
    mainScreenContainer.appendChild(gameScreenContainer);
 }
 
-function renderGridSquare(x, y) {
+function renderGridSquare(row, col) {
    const gridSquare = document.createElement("div");
    gridSquare.classList.add("grid-square");
-   gridSquare.setAttribute("data-x", x);
-   gridSquare.setAttribute("data-y", y);
+   gridSquare.setAttribute("data-x", col);
+   gridSquare.setAttribute("data-y", row);
 
    return gridSquare;
 }
 
-function markMissedAttack(x, y, board) {
+function markMissedAttack(row, col, board) {
    let missedSquareElement;
 
    if (board === "enemyBoard") {
       const enemyBoard = document.getElementById("enemy-board");
       missedSquareElement = enemyBoard.querySelector(
-         `[data-x="${x}"][data-y="${y}"]`
+         `[data-x="${col}"][data-y="${row}"]`
       );
    } else {
       const playerBoard = document.getElementById("player-board");
       missedSquareElement = playerBoard.querySelector(
-         `[data-x="${x}"][data-y="${y}"]`
+         `[data-x="${col}"][data-y="${row}"]`
       );
    }
 
@@ -82,18 +82,18 @@ function markMissedAttack(x, y, board) {
    missedSquareElement.classList.add("missed-attack");
 }
 
-function markSuccessfulAttack(x, y, board) {
+function markSuccessfulAttack(row, col, board) {
    let shipSquareElement;
 
    if (board === "enemyBoard") {
       const enemyBoard = document.getElementById("enemy-board");
       shipSquareElement = enemyBoard.querySelector(
-         `[data-x="${x}"][data-y="${y}"]`
+         `[data-x="${col}"][data-y="${row}"]`
       );
    } else {
       const playerBoard = document.getElementById("player-board");
       shipSquareElement = playerBoard.querySelector(
-         `[data-x="${x}"][data-y="${y}"]`
+         `[data-x="${col}"][data-y="${row}"]`
       );
    }
 
@@ -142,10 +142,10 @@ function displayLosingScreen() {
    mainScreenContainer.appendChild(gameOverScreenContainer);
 }
 
-function displayShipPlacementSelection(x, y) {
+function displayShipPlacementSelection(row, col) {
    const shipPlacementBoard = document.getElementById("ship-placement-board");
    let gridSquare = shipPlacementBoard.querySelector(
-      `[data-x="${x}"][data-y="${y}"]`
+      `[data-x="${row}"][data-y="${col}"]`
    );
 
    gridSquare.classList.add("player-ship");
