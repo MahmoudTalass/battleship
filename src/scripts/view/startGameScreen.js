@@ -12,8 +12,8 @@ function renderStartScreen() {
    grid.classList.add("ship-placement-board");
    grid.id = "ship-placement-board";
 
-   for (let y = 0; y < 10; y++) {
-      for (let x = 0; x < 10; x++) {
+   for (let x = 0; x < 10; x++) {
+      for (let y = 0; y < 10; y++) {
          grid.appendChild(renderGridSquare(x, y));
       }
    }
