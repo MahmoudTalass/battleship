@@ -80,11 +80,15 @@ function enemyAttack() {
    const randomAttackInfo = RandomOperations.randomAttack(enemy, player.board);
 
    if (randomAttackInfo.attackMessage == "missed") {
-      markMissedAttack(randomAttackInfo.x, randomAttackInfo.y, "playerBoard");
+      markMissedAttack(
+         randomAttackInfo.row,
+         randomAttackInfo.col,
+         "playerBoard"
+      );
    } else {
       markSuccessfulAttack(
-         randomAttackInfo.x,
-         randomAttackInfo.y,
+         randomAttackInfo.row,
+         randomAttackInfo.col,
          "playerBoard"
       );
    }

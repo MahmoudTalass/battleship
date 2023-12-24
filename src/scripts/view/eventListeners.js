@@ -44,12 +44,12 @@ class ShipPlacementEvents {
          const isTargetSquare = squareElement.classList.contains("grid-square");
 
          if (isTargetSquare) {
-            const xCoordinate = Number(squareElement.getAttribute("data-x"));
-            const yCoordinate = Number(squareElement.getAttribute("data-y"));
+            const col = Number(squareElement.getAttribute("data-x"));
+            const row = Number(squareElement.getAttribute("data-y"));
 
             let isPlacementSuccessful = placePlayerShip(
-               xCoordinate,
-               yCoordinate,
+               row,
+               col,
                SHIP_LENGTHS[this.indexOfShipBeingProcessed],
                this.shipPlacementDirection
             );

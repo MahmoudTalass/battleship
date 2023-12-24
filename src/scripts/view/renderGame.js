@@ -145,7 +145,7 @@ function displayLosingScreen() {
 function displayShipPlacementSelection(row, col) {
    const shipPlacementBoard = document.getElementById("ship-placement-board");
    let gridSquare = shipPlacementBoard.querySelector(
-      `[data-x="${row}"][data-y="${col}"]`
+      `[data-x="${col}"][data-y="${row}"]`
    );
 
    gridSquare.classList.add("player-ship");
