@@ -1,4 +1,4 @@
-import dot from "./../../icons/circle-small.png";
+import dot from "./../../images/circle-small.png";
 
 function renderGameScreen() {
    const mainScreenContainer = document.getElementById("main-screen");
