@@ -72,7 +72,6 @@ class ShipPlacementEvents {
                }
             }
          }
-         console.log(this.indexOfShipBeingProcessed);
          if (this.indexOfShipBeingProcessed >= SHIP_LENGTHS.length) {
             mainScreenContainer.removeChild(startScreenContainer);
             initiateGame();
