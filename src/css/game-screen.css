@@ -24,21 +24,25 @@
    grid-template-rows: repeat(10, 2.5rem);
    position: relative;
    cursor: pointer;
+   background-color: #6ba2e5;
 }
 
 .grid-square {
-   border: 1px solid rgb(177, 175, 175);
+   border: 0.4px dashed rgb(108, 103, 103);
    display: flex;
    align-items: center;
    justify-content: center;
 }
 
+.enemy-board > .grid-square {
+   transition: background-color 0.1s ease-in;
+}
 .enemy-board > .grid-square:hover {
    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .player-ship {
-   border: 2px solid blue;
+   background-color: #333333;
 }
 
 .icon {
@@ -47,12 +51,11 @@
 }
 
 .missed-attack {
-   background-color: rgb(89, 138, 187);
+   background-color: #000000;
 }
 
 .successful-attack {
-   background-color: rgb(212, 49, 49);
-   border: 2px solid red;
+   background-color: #c0392b;
 }
 
 .gameover-screen-container {
