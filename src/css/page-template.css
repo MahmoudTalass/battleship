@@ -1,5 +1,6 @@
 body {
    min-height: 100vh;
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
    display: flex;
    flex-direction: column;
 }
@@ -8,18 +9,33 @@ body {
    flex-grow: 1;
    display: flex;
    justify-content: center;
+   background-color: #c2f0f5;
+   background-image: url(./../images/Ocean.png);
+   background-size: cover;
 }
 
 .header {
    font-size: 3rem;
+   background-color: #8fb8ea;
    text-align: center;
    padding: 2rem;
-   border-bottom: 1px black dashed;
+   letter-spacing: 0.8rem;
 }
 
 .footer {
    margin-top: auto;
    text-align: center;
    padding: 1rem;
-   border-top: 1px black dashed;
+   background-color: #5e7eb5;
+   position: relative;
+}
+
+.background-img-attribute {
+   position: absolute;
+   left: 10px;
+   bottom: 10px;
+}
+
+.background-img-attribute > a {
+   color: #fff;
 }
