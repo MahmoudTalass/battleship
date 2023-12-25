@@ -50,10 +50,6 @@
    height: 0.2rem;
 }
 
-.missed-attack {
-   background-color: #000000;
-}
-
 .successful-attack {
    background-color: #c0392b;
 }
@@ -78,5 +74,7 @@
 .play-again-btn {
    padding: 0.8rem 1.5rem;
    font-size: 1.2rem;
-   color: black;
+   font-weight: bold;
+   color: #fff;
+   background-color: #333333;
 }
